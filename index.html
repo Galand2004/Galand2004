@@ -1,94 +1,54 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Calculatrice Scientifique</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .calculator {
-      background-color: #fafafa;
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .calculator input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: none;
-      border-radius: 3px;
-      background-color: #fff;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    }
-
-    .calculator button {
-      width: 25%;
-      padding: 10px;
-      margin: 5px;
-      border: none;
-      border-radius: 3px;
-      background-color: #4caf50;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <div class="calculator">
-    <input type="text" id="output">
-    <div>
-      <button onclick="clearOutput()">C</button>
-      <button onclick="deleteCharacter()">&#9003;</button>
-      <button onclick="appendToOutput('/')">/</button>
-      <button onclick="appendToOutput('7')">7</button>
-      <button onclick="appendToOutput('8')">8</button>
-      <button onclick="appendToOutput('9')">9</button>
-      <button onclick="appendToOutput('*')">*</button>
-      <button onclick="appendToOutput('4')">4</button>
-      <button onclick="appendToOutput('5')">5</button>
-      <button onclick="appendToOutput('6')">6</button>
-      <button onclick="appendToOutput('-')">-</button>
-      <button onclick="appendToOutput('1')">1</button>
-      <button onclick="appendToOutput('2')">2</button>
-      <button onclick="appendToOutput('3')">3</button>
-      <button onclick="appendToOutput('+')">+</button>
-      <button onclick="appendToOutput('0')">0</button>
-      <button onclick="appendToOutput('.')">.</button>
-      <button onclick="calculateResult()">=</button>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="fav.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="container" id="calc">
+      <h3 class="title">yawa calculator</h1>
+        <div class="screen">
+          <div class="screen-content">
+            <div readonly="readonly" class="screen-result" id="calc_resultat">
+              <p id="resultat">0</p>
+            </div>
+            <div class="screen-operation">
+              <p id="operation"></p>
+            </div>
+          </div>
+        </div>
+       <div class="calculator">
+        <div class="numbers">
+          <div class="number" id="backspace" onclick="clearScreen()">CE</div>
+          <div class="number" id="parenthese-open">(</div>
+          <div class="number" id="parenthese-close">)</div>
+          <div class="number" id="seven" onclick="getNumber(this)">7</div>
+          <div class="number" id="eight" onclick="getNumber(this)">8</div>
+          <div class="number" id="nine" onclick="getNumber(this)">9</div>
+          <div class="number" id="four" onclick="getNumber(this)">4</div>
+          <div class="number" id="five" onclick="getNumber(this)">5</div>
+          <div class="number" id="six" onclick="getNumber(this)">6</div>
+          <div class="number" id="one" onclick="getNumber(this)">1</div>
+          <div class="number" id="two" onclick="getNumber(this)">2</div>
+          <div class="number" id="three" onclick="getNumber(this)">3</div>
+          <div class="number" id="modulo" onclick="getNumber(this)">%</div>
+          <div class="number" id="zero"onclick="getNumber(this)">0</div>
+          <div class="number" id="dot" onclick="getNumber(this)">.</div>   
+        </div>
+        <div class="operators">
+           
+            <div class="operator" id="multiplication" onclick="getOperator(this)">*</div>
+            <div class="operator" id="subtraction" onclick="getOperator(this)">-</div>
+            <div class="operator" id="division" onclick="getOperator(this)">/</div>
+            <div class="operator" id="addition" onclick="getOperator(this)">+</div>
+            <div class="operator" id="equal" onclick="equals()">=</div>
+            
+          </div>
+      </div>
     </div>
-  </div>
-
-  <script>
-    function appendToOutput(value) {
-      document.getElementById('output').value += value;
-    }
-
-    function clearOutput() {
-      document.getElementById('output').value = '';
-    }
-
-    function deleteCharacter() {
-      let currentOutput = document.getElementById('output').value;
-      document.getElementById('output').value = currentOutput.slice(0, -1);
-    }
-
-    function calculateResult() {
-      let result = eval(document.getElementById('output').value);
-      document.getElementById('output').value = result;
-    }
-  </script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
